@@ -1,0 +1,63 @@
+vim/git 命令
+
+教程：https://blog.csdn.net/wangrenbao123/article/details/55511461
+
+cd
+cd d: 进入D盘
+cd XXX 进入XXX文件夹
+
+mkdir
+mkdir XXX 新建一个名为XXX的文件夹
+
+pwd
+pwd用于显示当前的目录
+
+git init 把当前目录变成git可管理的仓库（会自动创建一个.git的目录）
+
+vim
+vim XXX 创建一个名为XXX的文件。
+
+rm XXX 删除文件XXX
+
+git add XXX （把文件添加到暂存区）
+git commit -m 'abc'（把暂存区文件提交到当前分支）
+向git提交了文件XXX，注释为abc 
+
+/**问题：添加文件时出现如下提示。
+$ git add readme.txt
+warning: LF will be replaced by CRLF in readme.txt.
+The file will have its original line endings in your working directory.
+
+
+问题出在不同操作系统所使用的换行符是不一样的
+Uinx/Linux采用换行符LF表示下一行（LF：LineFeed，中文意思是换行）
+Dos和Windows采用回车+换行CRLF表示下一行（CRLF：CarriageReturn LineFeed，中文意思是回车换行）
+Mac OS采用回车CR表示下一行（CR：CarriageReturn，中文意思是回车）。
+在Git中，可以通过以下命令来显示当前你的Git中采取哪种对待换行符的方式
+$ git config core.autocrlf  
+此命令会有三个输出，“true”，“false”或者“input”
+为true时，Git会将你add的所有文件视为文本问价你，将结尾的CRLF转换为LF，而checkout时会再将文件的LF格式转为CRLF格式。
+为false时，line endings不做任何改变，文本文件保持其原来的样子。
+为input时，add时Git会把CRLF转换为LF，而check时仍旧为LF，所以Windows操作系统不建议设置此值。
+
+$ git config --global core.autocrlf params 修改core.autocrlf，params取值为true/false/input
+
+**/
+
+git status 查看提交状态
+git log 查看提交日志
+git log --pretty=oneline 简要显示日志
+git reflog 查看日志
+
+git reset 回退版本
+git reset --hard HEAD^ 回退到上一个版本
+git reset --hard HEAD^^ 回退到上两个版本
+git reset --hard HEAD~n 回退到上n个版本
+git reset --hard 版本号 根据版本号回退。
+
+ssh-keygen -t rsa 生成秘钥
+
+git remote add origin https://github.com/XXX/XX.git
+关联远程仓库。
+git push origin master 把本地仓库分支master内容推送到远程仓库中。
+
