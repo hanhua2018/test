@@ -61,3 +61,6 @@ git remote add origin https://github.com/XXX/XX.git
 关联远程仓库。
 git push origin master 把本地仓库分支master内容推送到远程仓库中。
 
+git checkout 创建分支
+git checkout -b XXX 创建分支XXX并切换
+
